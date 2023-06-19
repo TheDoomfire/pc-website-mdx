@@ -6,13 +6,7 @@ description: Discover how dividends can play a crucial role in wealth building
 author: Albini
 date: 2023-05-29T11:00:24.342Z
 dateposted: 2023-05-29T11:00:24.373Z
-tags:
-  - post
-keywords: dividends
-image: https://images.unsplash.com/photo-1635231152840-bad680218fbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
-image_fallback: https://images.unsplash.com/photo-1635231152840-bad680218fbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
-imageAlt: 100 Dollar bill
-draft: true
+tags: ['dividends','investing']
 ---
 <!--StartFragment-->
 

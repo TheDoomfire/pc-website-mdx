@@ -6,13 +6,7 @@ description: Learn how mutual fund expenses affect your returns. Gain insights
 author: Albini
 date: 2023-06-01T10:58:19.706Z
 dateposted: 2023-06-01T10:58:19.744Z
-tags:
-  - post
-keywords: funds, mutual funds
-image: https://plus.unsplash.com/premium_photo-1671260683087-4c4910ce6aaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80
-image_fallback: https://plus.unsplash.com/premium_photo-1671260683087-4c4910ce6aaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80
-imageAlt: A butterfly flying holding coins.
-draft: true
+tags: ['mutual funds','investing']
 ---
 <!--StartFragment-->
 

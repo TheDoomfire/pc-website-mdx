@@ -6,13 +6,7 @@ description: Explore the pros and cons of investing in rental properties vs.
 author: Albini
 date: 2023-06-03T09:45:54.766Z
 dateposted: 2023-06-03T09:45:56.143Z
-tags:
-  - post
-keywords: reits, real estate
-image: https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=996&q=80
-image_fallback: https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=996&q=80
-imageAlt: Skyscrapers
-draft: false
+tags: ['real estate','investing']
 ---
 ## Introduction
 
