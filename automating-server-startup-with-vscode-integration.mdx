@@ -1,0 +1,136 @@
+---
+title: "Automating Server Startup with VSCode Integration"
+date: 2023-06-30
+description: "Streamline server startup and enhance workflow with this guide on automating server startup and integrating it with Visual Studio Code for seamless development."
+tags: ['web development', 'batch', 'powershell']
+---
+
+## Introduction
+
+The point of the script is to simply run any web server without having to use the VSCode terminal, while being much more lightweight.
+
+We will use a Windows batch script, but PowerShell can also be used. They are both similar, with the difference being that a batch script is much simpler and good enough for this use case.
+
+With a batch file, you just have to click it and don't have to bother with right-clicking. However, you can fix this if you prefer, but good enough is good enough for me.
+
+I will also provide a PowerShell script at the end of this article in case you prefer to use it instead.
+
+
+## The Script
+
+This is the finished code. If it does something you don't like, read on, and I will explain what you can remove or edit to get the desired outcome and what everything does.
+This script will:
+Run the server in a separate command window.
+Run the "website" in the default browser.
+Open VS Code with the project.
+
+```batch
+@ECHO OFF
+title Running Server
+set VS_Code_title=VS Code
+
+
+START http://localhost:3000/
+
+
+:: Checks if process is running.
+set "processName=Code.exe"
+tasklist /FI "IMAGENAME eq %processName%" 2>NUL | find /I "%processName%" >NUL
+if not "%ERRORLEVEL%"=="0" (
+    :: Runs VS Code.
+    START /WAIT "%VS_Code_title%" cmd /c code "%~dp0"
+    taskkill /FI "WINDOWTITLE eq %VS_Code_title%" /F
+    CLS
+)
+
+
+:: Runs the server at the underlying folder frontend.
+CD "%~dp0"
+NPM run dev
+
+
+EXIT
+
+
+
+```
+
+Now you only need to download this and save it as a .bat file. This script will simply run the server wherever the .bat file is located.
+
+
+## What does "START" do?
+
+It runs a website in the default browser.
+
+For example, `START http://google.com/` will open Google in the default browser. In our case, it will run the website or whatever project we're working on.
+
+If you want to run it in a browser other than the default one, you have to do something like this:
+
+```batch
+set "browserPath=C:\Path\to\Browser.exe"
+
+start "" "%browserPath%" "https://www.example.com"
+```
+
+
+## What does the IF statement do?
+
+All this does is check if an instance of VS Code is already running. You can remove this if you want to have several VS Code windows open at the same time.
+
+Keep in mind that it won't open the same instance of VS Code.
+
+```batch
+set "processName=Code.exe"
+tasklist /FI "IMAGENAME eq %processName%" 2>NUL | find /I "%processName%" >NUL
+if not "%ERRORLEVEL%"=="0" ()
+```
+
+## Want to change the default path?
+
+The `%~dp0` simply represents the path where the .bat file is located. So, if you want the code to run in a folder called "frontend," you can simply pass `%~dp0frontend` and it will work.
+
+
+
+```batch
+CD "%~dp0"
+NPM run dev
+```
+
+## Powershell Script
+
+As said I find it annoying to having to right click and press run as powershell script. Which is even more annoying if you change computers regularly and just want a script that works.
+
+```powershell
+$websiteUrl = "http://localhost:3000/"
+$vscodeLocation = Join-Path $PSScriptRoot "frontend"
+
+
+# Open the website in the default browser
+Start-Process $websiteUrl
+
+
+$processName = "Code.exe"
+$processRunning = tasklist /FI "IMAGENAME eq $processName" 2>$null | Select-String -Pattern $processName
+
+
+if ($processRunning) {
+    Write-Host "Process is running."
+}
+else {
+    Write-Host "Process is not running. Opening VS Code..."
+    Start-Process code -ArgumentList $vscodeLocation
+}
+
+
+# Change current directory to vscodeLocation
+Set-Location -Path $vscodeLocation
+
+
+# Run "npm run dev"
+npm run dev
+
+
+# Exit the script
+Exit
+```
+
