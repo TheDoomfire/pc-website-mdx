@@ -24,7 +24,7 @@ Run the server in a separate command window.
 Run the "website" in the default browser.
 Open VS Code with the project.
 
-```code
+```
 @ECHO OFF
 title Running Server
 set VS_Code_title=VS Code
@@ -66,7 +66,7 @@ For example, `START http://google.com/` will open Google in the default browser.
 
 If you want to run it in a browser other than the default one, you have to do something like this:
 
-```code
+```
 set "browserPath=C:\Path\to\Browser.exe"
 
 start "" "%browserPath%" "https://www.example.com"
@@ -79,7 +79,7 @@ All this does is check if an instance of VS Code is already running. You can rem
 
 Keep in mind that it won't open the same instance of VS Code.
 
-```code
+```
 set "processName=Code.exe"
 tasklist /FI "IMAGENAME eq %processName%" 2>NUL | find /I "%processName%" >NUL
 if not "%ERRORLEVEL%"=="0" ()
@@ -91,7 +91,7 @@ The `%~dp0` simply represents the path where the .bat file is located. So, if yo
 
 
 
-```code
+```
 CD "%~dp0"
 NPM run dev
 ```
