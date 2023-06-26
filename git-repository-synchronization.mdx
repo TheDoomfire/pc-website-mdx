@@ -1,0 +1,68 @@
+---
+title: "Git Repository Synchronization Script"
+date: 2023-06-30
+description: "Effortlessly synchronize and update multiple GitHub repositories with this powerful Git script for streamlined maintenance and collaboration."
+tags: ['web development', 'batch', 'powershell', 'git']
+---
+
+
+## Introduction
+
+Our Git Repository Synchronization Script simplifies the process of updating multiple repositories hosted on GitHub. 
+
+Designed to streamline maintenance and collaboration, this script automatically fetches the latest changes and performs a hard reset to the 'origin/main' branch. 
+
+Whether you prefer Batch or PowerShell, we've got you covered with two versions of the script. 
+
+Keep your repositories effortlessly up to date and in sync with just a few commands.
+
+
+### Requirements
+
+- Windows OS
+- Git
+
+If you don't have Git installed on your system, give our [App Installer](/tools/installer) a try.
+
+
+## Batch Version
+
+Save as .bat or .cmd
+
+```
+set "root=%~dp0GitHub"
+
+for /d %%a in ("%root%\*") do (
+  cd /d "%%a"
+  git fetch --all
+  git reset --hard origin/main
+)
+
+```
+
+## Powershell Version
+
+Save as .ps1
+
+
+```
+$root = Join-Path -Path $PSScriptRoot -ChildPath "GitHub"
+
+Get-ChildItem -Path $root -Directory | ForEach-Object {
+    Set-Location -Path $_.FullName
+    git fetch --all
+    git reset --hard origin/main
+}
+```
+
+## How does it work?
+
+The Git Repository Synchronization Script simplifies the updating process for multiple repositories. 
+
+When executed from a folder, the script automatically searches for a subfolder named "GitHub" within that directory. 
+
+It then proceeds to update each repository found within the "GitHub" folder. 
+
+By leveraging this structure, you can conveniently organize your repositories and ensure that all of them receive the latest changes with ease. 
+
+Whether you choose the Batch or PowerShell version, the script provides a seamless solution for keeping your GitHub repositories up to date.
