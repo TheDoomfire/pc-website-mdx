@@ -1,0 +1,92 @@
+---
+title: "Git Repository Synchronization Script"
+date: 2023-07-12
+description: "Effortlessly switch multi-display settings in Windows and view current configurations with this PowerShell script. Toggle modes only if specific conditions are met. Simplify your display management."
+tags: ['display', 'batch', 'powershell']
+---
+
+## Introduction
+
+With this script, you can ensure that mode switching is only performed if certain conditions are met, streamlining your display management process.
+
+Let's dive in and unlock the power of PowerShell for seamless multi-display control in Windows.
+
+### Requirements
+
+- Windows OS
+- PowerShell (Installed by Default in Windows)
+
+
+## The Script
+
+Save as .ps1
+
+```
+Add-Type -TypeDefinition @"
+using System;
+using System.Runtime.InteropServices;
+
+public class DisplayModeInfo
+{
+    [DllImport("user32.dll")]
+    public static extern int GetSystemMetrics(int nIndex);
+}
+"@
+
+$SM_CMONITORS = 80
+$displaySettings = [DisplayModeInfo]::GetSystemMetrics($SM_CMONITORS)
+$displayMode = ""
+$displayNumber = $displaySettings
+
+if ($displayNumber -eq 1) {
+    $displayMode = "Dublicated Display"
+    DisplaySwitch.exe /extend
+}
+elseif ($displayNumber -eq 2) {
+    $displayMode = "Extended Displays"
+    DisplaySwitch.exe /clone
+}
+else {
+    $displayMode = "Unknown"
+    Write-Host "Current Display Mode: $displayMode ($displayNumber)"
+    Pause
+}
+
+```
+
+
+## How does it work?
+
+The script functions by checking the current **Multiple displays** settings in Windows. You can easily find this information yourself in the display settings of Windows.
+
+If you're unsure about the display you're currently using, I recommend running the script while swapping the numbers around as follows:
+
+```
+Write-Host $displayNumber
+Read-Host -Prompt "Press Enter to continue..."
+```
+
+This way, you can determine the display you want to work with. Inside the script, you can execute any desired actions. In my case, I use `DisplaySwitch.exe /COMMAND_HERE` to switch between extending and duplicating the display, but feel free to customize it to your liking.
+
+It's important to note that the DisplaySwitch.exe utility, provided by Windows, enables you to toggle between various display modes by specifying the desired command after DisplaySwitch.exe.
+
+By default, the script employs `/extend` for a single display and `/clone` for dual displays. However, you have the flexibility to modify these commands based on your preferences.
+
+
+## DisplaySwitch.exe
+
+DisplaySwitch is a utility provided by Windows that enables users to switch between different display modes. 
+
+It allows you to control primary display settings, mirror displays, extend desktops across multiple screens, or switch to an external display.
+
+It provides flexibility in managing and customizing display configurations based on your preferences.
+
+### All DisplaySwitch.exe Commands
+
+1. **/internal**: This command switches to using the primary display only. All other connected displays will be disabled.
+
+2. **/clone**: By using this command, the primary display will be mirrored on a second screen.
+
+3. **/extend**: This command expands the Desktop to a secondary display, allowing one desktop to span multiple displays. This is the default option.
+
+4. **/external**: Switching to the external display only (second screen) can be achieved with this command. The current main display will be disabled.
