@@ -29,7 +29,7 @@ If you don't have Git installed on your system, give our [App Installer](/tools/
 
 Save as .bat or .cmd
 
-```
+{/* ```
 set "root=%~dp0GitHub"
 
 for /d %%a in ("%root%\*") do (
@@ -38,14 +38,14 @@ for /d %%a in ("%root%\*") do (
   git reset --hard origin/main
 )
 
-```
+``` */}
 
 ## Powershell Version
 
 Save as .ps1
 
 
-```powershell
+{/* ```powershell
 $root = Join-Path -Path $PSScriptRoot -ChildPath "GitHub"
 
 Get-ChildItem -Path $root -Directory | ForEach-Object \{
@@ -53,7 +53,7 @@ Get-ChildItem -Path $root -Directory | ForEach-Object \{
     git fetch --all
     git reset --hard origin/main
 \}
-```
+``` */}
 
 ## How does it work?
 

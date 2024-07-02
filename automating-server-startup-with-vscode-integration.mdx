@@ -24,7 +24,7 @@ Run the server in a separate command window.
 Run the "website" in the default browser.
 Open VS Code with the project.
 
-```
+{/* ```
 @ECHO OFF
 title Running Server
 set VS_Code_title=VS Code
@@ -53,7 +53,7 @@ EXIT
 
 
 
-```
+``` */}
 
 Now you only need to download this and save it as a .bat file. This script will simply run the server wherever the .bat file is located.
 
@@ -66,11 +66,11 @@ For example, `START http://google.com/` will open Google in the default browser.
 
 If you want to run it in a browser other than the default one, you have to do something like this:
 
-```
+{/* ```
 set "browserPath=C:\Path\to\Browser.exe"
 
 start "" "%browserPath%" "https://www.example.com"
-```
+``` */}
 
 
 ## What does the IF statement do?
@@ -79,11 +79,11 @@ All this does is check if an instance of VS Code is already running. You can rem
 
 Keep in mind that it won't open the same instance of VS Code.
 
-```
+{/* ```
 set "processName=Code.exe"
 tasklist /FI "IMAGENAME eq %processName%" 2>NUL | find /I "%processName%" >NUL
 if not "%ERRORLEVEL%"=="0" ()
-```
+``` */}
 
 ## Want to change the default path?
 
@@ -91,16 +91,16 @@ The `%~dp0` simply represents the path where the .bat file is located. So, if yo
 
 
 
-```
+{/* ```
 CD "%~dp0"
 NPM run dev
-```
+``` */}
 
 ## Powershell Script
 
 As said I find it annoying to having to right click and press run as powershell script. Which is even more annoying if you change computers regularly and just want a script that works.
 
-```powershell
+{/* ```powershell
 $websiteUrl = "http://localhost:3000/"
 $vscodeLocation = Join-Path $PSScriptRoot "frontend"
 
@@ -132,5 +132,4 @@ npm run dev
 
 # Exit the script
 Exit
-```
-
+``` */}

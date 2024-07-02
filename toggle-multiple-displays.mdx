@@ -21,7 +21,7 @@ Let's dive in and unlock the power of PowerShell for seamless multi-display cont
 
 Save as .ps1
 
-```powershell
+{/* ```powershell
 Add-Type -TypeDefinition @"
 using System;
 using System.Runtime.InteropServices;
@@ -52,7 +52,7 @@ else \{
     Pause
 \}
 
-```
+``` */}
 
 
 ## How does it work?
@@ -61,11 +61,11 @@ The script functions by checking the current **Multiple displays** settings in W
 
 If you're unsure about the display you're currently using, I recommend running the script while swapping the numbers around as follows:
 
-```powershell
+{/* ```powershell
 Write-Host $displayNumber
 Read-Host -Prompt "Press Enter to continue..."
 ```
-
+ */}
 This way, you can determine the display you want to work with. Inside the script, you can execute any desired actions. In my case, I use `DisplaySwitch.exe /COMMAND_HERE` to switch between extending and duplicating the display, but feel free to customize it to your liking.
 
 It's important to note that the DisplaySwitch.exe utility, provided by Windows, enables you to toggle between various display modes by specifying the desired command after DisplaySwitch.exe.
