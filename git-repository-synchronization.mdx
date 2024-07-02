@@ -45,7 +45,7 @@ for /d %%a in ("%root%\*") do (
 Save as .ps1
 
 
-```
+```powershell
 $root = Join-Path -Path $PSScriptRoot -ChildPath "GitHub"
 
 Get-ChildItem -Path $root -Directory | ForEach-Object \{
