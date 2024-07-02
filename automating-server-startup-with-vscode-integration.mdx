@@ -113,13 +113,13 @@ $processName = "Code.exe"
 $processRunning = tasklist /FI "IMAGENAME eq $processName" 2>$null | Select-String -Pattern $processName
 
 
-if ($processRunning) {
+if ($processRunning) \{
     Write-Host "Process is running."
-}
-else {
+\}
+else \{
     Write-Host "Process is not running. Opening VS Code..."
     Start-Process code -ArgumentList $vscodeLocation
-}
+\}
 
 
 # Change current directory to vscodeLocation

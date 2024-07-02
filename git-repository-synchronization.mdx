@@ -48,11 +48,11 @@ Save as .ps1
 ```
 $root = Join-Path -Path $PSScriptRoot -ChildPath "GitHub"
 
-Get-ChildItem -Path $root -Directory | ForEach-Object {
+Get-ChildItem -Path $root -Directory | ForEach-Object \{
     Set-Location -Path $_.FullName
     git fetch --all
     git reset --hard origin/main
-}
+\}
 ```
 
 ## How does it work?
